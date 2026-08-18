@@ -14,3 +14,22 @@ function fibs(n) {
   }
   return sequence;
 }
+
+function fibsRec(position) {
+  function innerFibs(currentNum, nextNum, sequence) {
+    if (sequence.length === position) {
+      return sequence;
+    }
+    let num = currentNum + nextNum;
+    let newSequence = sequence.concat(num);
+    return innerFibs(nextNum, num, newSequence);
+  }
+
+  if (position <= 0) {
+    return "Please, input a positive integer";
+  } else if (position === 1) {
+    return [0];
+  }
+
+  return innerFibs(0, 1, [0, 1]);
+}
